@@ -19,8 +19,238 @@ a {
   html {
     color-scheme: dark;
   }
-  body {
-    color: white;
-    background: black;
-  }
+
 }
+
+.dark-mode-body {
+  background-color: #202d36;
+  color: white;
+}
+
+.dark-mode-container {
+  background-color: #2b3743 !important;
+  color: white !important;
+}
+
+.detail-page {
+  padding: 60px 100px 200px 100px;
+}
+
+.main-page {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  padding-left: 100px;
+  padding-right: 100px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
+.header-btn {
+  border: none;
+  background: none;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+
+.header h1 {
+font-size: 24px;
+}
+
+.moon-icon {
+  margin-right: 6px;
+}
+
+.sun-icon {
+  margin-right: 6px;
+}
+
+.search-block {
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.form-control {
+  display: block;
+  width: 400px;
+  height: 48px;
+  padding: 6px 6px 6px 60px;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: none;
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+}
+
+.search-icon {
+  position: absolute;
+  top: 114px;
+  left: 118px;
+}
+
+.select-bar {
+  width: 148px;
+  padding: 12px;
+  font-size: 14px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
+.country-flag {
+  height: 160px;
+  width: 260px;
+}
+
+.grid-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 66px;
+  justify-content: flex-start;
+  padding-block: 50px;
+}
+
+.country-details {
+  padding-inline-start: unset;
+  list-style-type: none;
+  padding: 20px 20px 30px 20px;
+  margin: unset;
+}
+
+.country-details-head {
+  font-weight: 700;
+  padding-block: 10px;
+  inline-size: 170px;
+  line-height: 18px;
+}
+
+.country-details-h {
+  padding-block: 4px;
+  font-size: 14px;
+}
+
+.country-details-h span {
+  font-weight: 250;
+  color: #1c1c1c91;
+}
+
+.country-card {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
+.search-bar {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
+.left-arrow {
+    width: 14px;
+    position: relative;
+    top: 2px;
+    right: 4px;
+}
+
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.pagination a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.left-btn {
+  display: block;
+  width: 120px;
+  height: 38px;
+  padding: 8px 30px 6px 30px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: none;
+  box-shadow: rgb(17 17 26 / 30%) 0px 0px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.detail-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+  padding-top: 60px;
+}
+
+.country-img {
+  height: 400px;
+  width: 560px;
+}
+
+.detail-sub {
+  list-style-type: none;
+}
+
+.detail-sub li {
+  padding-block: 6px;
+  font-size: 14px;
+}
+
+.detail-sub span {
+  color: gray;
+}
+
+.country-detail h3 {
+  padding-left: 40px;
+}
+
+.country-detail-sub {
+  display: flex;
+}
+
+.border-country-title .border-country {
+  padding-top: 60px;
+  list-style-type: none;
+  font-size: 14px;
+}
+
+.border-country span {
+  box-shadow: rgb(17 17 26 / 13%) 0px 0px 16px;
+  padding: 6px 30px 6px 30px;
+  margin-left: 10px;
+
+  color: gray;
+}
+
