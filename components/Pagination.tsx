@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Pagination(props: any) {
   return (
-    <div className="pagination">
+    <div className={props.darkMode? "paginationDark" : "pagination"}>
         <a onClick={props.prevPage}>&laquo;</a>
         <a href="#">1</a>
         <a className="active" href="#">

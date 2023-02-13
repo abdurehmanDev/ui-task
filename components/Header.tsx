@@ -15,11 +15,11 @@ export default function Header(props: any) {
 
 
   return (
+
     <div className={props.darkMode? "header dark-mode-container" : "header"}>
     <h1>Where in the world?</h1>
     <button className={props.darkMode? 'header-btn dark-mode-container' : 'header-btn'} onClick={() => props.darkModeTogg()}>
        {props.darkMode? <SunIcon/> : <MoonIcon/> }<span >Dark Mode</span></button>
   </div>
- 
   )
 }

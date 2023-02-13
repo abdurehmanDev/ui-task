@@ -19,7 +19,6 @@ a {
   html {
     color-scheme: dark;
   }
-
 }
 
 .dark-mode-body {
@@ -41,7 +40,6 @@ a {
   padding-right: 100px;
 }
 
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -61,7 +59,7 @@ a {
 }
 
 .header h1 {
-font-size: 24px;
+  font-size: 24px;
 }
 
 .moon-icon {
@@ -74,9 +72,9 @@ font-size: 24px;
 
 .search-block {
   display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 40px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
 }
 
 .form-control {
@@ -153,15 +151,24 @@ font-size: 24px;
 }
 
 .left-arrow {
-    width: 14px;
-    position: relative;
-    top: 2px;
-    right: 4px;
+  width: 14px;
+  position: relative;
+  top: 2px;
+  right: 4px;
 }
-
 
 .pagination {
   display: inline-block;
+}
+.paginationDark {
+  display: inline-block;
+}
+.paginationDark a {
+  color: white;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
 }
 
 .pagination a {
@@ -173,12 +180,14 @@ font-size: 24px;
 }
 
 .pagination a.active {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
-  border: 1px solid #4CAF50;
+  border: 1px solid #4caf50;
 }
 
-.pagination a:hover:not(.active) {background-color: #ddd;}
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
 
 .pagination a:first-child {
   border-top-left-radius: 5px;
@@ -217,6 +226,7 @@ font-size: 24px;
 .country-img {
   height: 400px;
   width: 560px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 
 .detail-sub {
@@ -240,17 +250,105 @@ font-size: 24px;
   display: flex;
 }
 
-.border-country-title .border-country {
-  padding-top: 60px;
-  list-style-type: none;
-  font-size: 14px;
+.border-country {
+  padding-top: 30px;
+  padding-left: 40px;
 }
 
-.border-country span {
+.border-country-title {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.border-country-title li {
   box-shadow: rgb(17 17 26 / 13%) 0px 0px 16px;
-  padding: 6px 30px 6px 30px;
-  margin-left: 10px;
-
+  padding: 6px 30px 6px 14px;
   color: gray;
+  margin: 6px 8px 8px 0px;
+  text-align: center;
+  width: 140px;
+  list-style-type: none;
 }
 
+.detail-sub .detail-sub-value {
+  color: rgb(223, 220, 220) ;
+}
+
+@media screen and (max-width: 760px) {
+  .header {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .main-page {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .search-block {
+    display: block;
+  }
+  .search-icon {
+    top: 114px;
+    left: 70px;
+  }
+  .filter {
+    padding-top: 36px;
+  }
+
+  .grid-section {
+    gap: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .country-flag {
+    height: 180px;
+    width: 280px;
+  }
+  .select-bar {
+    width: 46%;
+  }
+  .search-bar .form-control {
+    width: 100%;
+  }
+  .detail-page {
+    padding: 40px 40px 120px 40px;
+  }
+  .detail-container {
+    display: block;
+  }
+  .country-img {
+    height: 80%;
+    width: 100%;
+  }
+  .country-detail {
+    font-size: 14px;
+    line-height: 12px;
+  }
+  .country-detail h3 {
+    padding-left: unset;
+    font-size: 24px;
+  }
+  .country-detail-sub {
+    display: block;
+    font-size: unset;
+  }
+  .detail-sub {
+    font-size: unset;
+    padding-left: 0px;
+  }
+  .detail-sub li {
+    font-size: unset;
+  }
+  .border-country-title {
+    padding-left: 0px;
+  }
+  .border-country-title li {
+    font-size: unset;
+  }
+  .border-country {
+    padding-left: 0;
+  }
+  .header h1 {
+    font-size: 20px;
+  }
+}

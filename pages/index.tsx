@@ -2,32 +2,44 @@ import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import Image from "next/image";
-import PicImage from "../design/country-img.jpeg";
 import Pagination from "../components/Pagination";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import Countrycard from "../components/Countrycard";
+import { type } from "os";
 
-export default function Home() {
-  const [countryData, setCountryData] = useState<string[]>([]);
+
+ function Home() {
+                   
+
   const [tempCountryData, setTempCountryData] = useState<string[]>([]);
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(8);
   const [darkMode , setDarkMode] = useState(false);
+  const [countryData, setCountryData] = useState<string[]>([]);
 
-  useEffect(() => {
-    fetch("https://mocki.io/v1/f87157ff-f9a9-4820-92fa-30a52231249b")
+  useEffect(() => { 
+    fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
       .then((data) => setCountryData(data))
       .then((err) => console.log(`An error occured ${err}`));
   }, []);
 
+
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((res) => res.json())
+      .then((data) => setTempCountryData(data))
+      .then((err) => console.log(`An error occured ${err}`));
+  }, []);
+
+
+ 
+  console.log("contryData", countryData);
+
 const darkModeTogg = () => {
   setDarkMode(!darkMode);
 }
-
-  useEffect(() => {
-    setTempCountryData(countryData);
-  }, [countryData]);
 
   const nextPage = () => {
     if (endIndex <= countryData.length) {
@@ -42,18 +54,19 @@ const darkModeTogg = () => {
       setEndIndex(endIndex - 8);
     }
   };
-
+  
   const filterByRegion = (regionName: string) => {
+    setStartIndex(0);
+    setEndIndex(8);
+    
     if (regionName === "default-value") {
-      setTempCountryData(countryData);
+  return setTempCountryData(countryData);
     } else {
       const filterResult = countryData.filter(
         (data: any) => data.region === regionName
       );
-      setTempCountryData(filterResult);
+     return setTempCountryData(filterResult);
     }
-    setStartIndex(0);
-    setEndIndex(8);
   };
 
   return (
@@ -64,19 +77,20 @@ const darkModeTogg = () => {
         <div className="grid-section">
           {tempCountryData &&
             tempCountryData.slice(startIndex, endIndex).map((data: any) => (
-              <div className={darkMode? "country-card dark-mode-container" : "country-card"}>
-                <Link href="/CountryDetails">
-                  <Image
-                    src={PicImage}
+              <div className={darkMode? "country-card dark-mode-container" : "country-card"} key={data.ccn3}>
+                <Link href={`CountryDetail/${encodeURIComponent(data.name.common)}`}>
+                  <img
+                    src={data.flags.png}
                     className="country-flag"
                     alt="country-flag"
+                    width={260}
+                    height={160}
                   />
-
                   <div>
                     <ul className={darkMode? "country-details dark-mode-container" : "country-details"}>
-                      <li className="country-details-head">{data.name}</li>
+                      <li className="country-details-head">{data.name.common}</li>
                       <li className="country-details-h">
-                        Population: <span  className={darkMode? "dark-mode-container" : ""}>{data.population}</span>
+                        Population: <span  className={darkMode? "dark-mode-container" : ""}>{new Intl.NumberFormat().format(data.population)}</span>
                       </li>
                       <li className="country-details-h">
                         Region: <span  className={darkMode? "dark-mode-container" : ""}>{data.region}</span>
@@ -89,9 +103,13 @@ const darkModeTogg = () => {
                 </Link>
               </div>
             ))}
-          <Pagination nextPage={nextPage} prevPage={prevPage} />
+          <Pagination nextPage={nextPage} prevPage={prevPage} darkMode={darkMode}/>
         </div>
       </div>
     </>
   );
 }
+
+
+
+export default Home

@@ -9,7 +9,6 @@ export default function SearchBar(props:any) {
     <input placeholder='Search a country.....' className={props.darkMode? "form-control dark-mode-container" :  "form-control"} type="text"/>
   </div>
   <div className="filter">
-  
   <select className={props.darkMode? 'form-control select-bar dark-mode-container' : 'form-control select-bar' } onChange={(e) => props.filterByRegion(e.target.value)}>
     <option value="default-value">Filter by Region</option>
     <option value='Americas'>Americas</option>
