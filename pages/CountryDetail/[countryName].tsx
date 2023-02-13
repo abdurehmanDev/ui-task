@@ -87,7 +87,7 @@ export default function CountryDetails() {
                           Time Zone:   <span className={darkMode? "detail-sub-value" : ""}>{data.timezones[0]}</span>
                         </li>
                         <li>
-                          Currencies: <span className={darkMode? "detail-sub-value" : ""}></span>
+                          Currencies: <span className={darkMode? "detail-sub-value" : ""}>{Object.values(data.currencies)[0].name}</span>
                         </li>
                         <li>
                           Languages: <span className={darkMode? "detail-sub-value" : ""}>
