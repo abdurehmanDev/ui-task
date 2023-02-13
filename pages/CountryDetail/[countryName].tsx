@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import LeftArrow from "../../components/LeftArrow";
 import Link from "next/link";
+import { type } from "os";
 
 export default function CountryDetails() {
   const [darkMode, setDarkMode] = useState(false);
@@ -10,6 +11,7 @@ export default function CountryDetails() {
 
   const router = useRouter();
   const name = router.query.countryName as string;
+
 
   const darkModeTogg = () => {
     setDarkMode(!darkMode);
@@ -22,6 +24,11 @@ export default function CountryDetails() {
       .then((err) => console.log(`An error occured ${err}`));
   }, []);
 
+  try {
+   
+} catch(e) {
+    console.log((e as Error).message)
+}
 
   return (
     <>
@@ -80,7 +87,7 @@ export default function CountryDetails() {
                           Time Zone:   <span className={darkMode? "detail-sub-value" : ""}>{data.timezones[0]}</span>
                         </li>
                         <li>
-                          Currencies: <span className={darkMode? "detail-sub-value" : ""}>{Object.values(data.currencies)[0].name}</span>
+                          Currencies: <span className={darkMode? "detail-sub-value" : ""}></span>
                         </li>
                         <li>
                           Languages: <span className={darkMode? "detail-sub-value" : ""}>

@@ -32,7 +32,7 @@ import { type } from "os";
       .then((err) => console.log(`An error occured ${err}`));
   }, []);
 
-
+  console.log(countryData);
 
 const darkModeTogg = () => {
   setDarkMode(!darkMode);
