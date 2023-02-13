@@ -5,7 +5,6 @@ import Image from "next/image";
 import Pagination from "../components/Pagination";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import Countrycard from "../components/Countrycard";
 import { type } from "os";
 
 
@@ -34,8 +33,6 @@ import { type } from "os";
   }, []);
 
 
- 
-  console.log("contryData", countryData);
 
 const darkModeTogg = () => {
   setDarkMode(!darkMode);
@@ -86,7 +83,7 @@ const darkModeTogg = () => {
                     width={260}
                     height={160}
                   />
-                  <div>
+                <div>
                     <ul className={darkMode? "country-details dark-mode-container" : "country-details"}>
                       <li className="country-details-head">{data.name.common}</li>
                       <li className="country-details-h">

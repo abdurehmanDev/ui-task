@@ -22,7 +22,6 @@ export default function CountryDetails() {
       .then((err) => console.log(`An error occured ${err}`));
   }, []);
 
-  console.log(individualData);
 
   return (
     <>
