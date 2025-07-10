@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import LeftArrow from "../../components/LeftArrow";
 import Link from "next/link";
 import { type } from "os";
+import Image from "next/image";
 
 export default function CountryDetails() {
   const [darkMode, setDarkMode] = useState(false);
@@ -21,7 +22,7 @@ export default function CountryDetails() {
     fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
       .then((data) => setIndividualData(data))
-      .then((err) => console.log(`An error occured ${err}`));
+      .catch((err) => console.log(`An error occured ${err}`));
   }, []);
 
   try {
@@ -50,15 +51,17 @@ export default function CountryDetails() {
             individualData
               .filter((data: any) => data.name.common === name)
               .map((data: any) => (
-                <>
+                <React.Fragment key={data.ccn3}>
                   <div>
-                    <img
+                    <Image
                       src={data.flags.png}
                       alt="country-flag"
                       className="country-img"
+                      width={320}
+                      height={200}
                     />
                   </div>
-                  <div className="country-detail" key={data.ccn3}>
+                  <div className="country-detail">
                     <h3>{data.name.common}</h3>
                     <div className="country-detail-sub">
                       <ul className="detail-sub">
@@ -87,7 +90,7 @@ export default function CountryDetails() {
                           Time Zone:   <span className={darkMode? "detail-sub-value" : ""}>{data.timezones[0]}</span>
                         </li>
                         <li>
-                          Currencies: <span className={darkMode? "detail-sub-value" : ""}>{Object.values(data.currencies)[0].name}</span>
+                          Currencies: <span className={darkMode? "detail-sub-value" : ""}>{Object.values(data.currencies as Record<string, { name: string }>)[0].name}</span>
                         </li>
                         <li>
                           Languages: <span className={darkMode? "detail-sub-value" : ""}>
@@ -112,7 +115,7 @@ export default function CountryDetails() {
                   
                     </ul>
                   </div>
-                </>
+                </React.Fragment>
               ))}
         </div>
       </div>

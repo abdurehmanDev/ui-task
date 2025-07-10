@@ -76,7 +76,7 @@ const darkModeTogg = () => {
             tempCountryData.slice(startIndex, endIndex).map((data: any) => (
               <div className={darkMode? "country-card dark-mode-container" : "country-card"} key={data.ccn3}>
                 <Link href={`CountryDetail/${encodeURIComponent(data.name.common)}`}>
-                  <img
+                  <Image
                     src={data.flags.png}
                     className="country-flag"
                     alt="country-flag"
