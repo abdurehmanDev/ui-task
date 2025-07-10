@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 
 import { render, screen, waitFor } from '@testing-library/react';
-import CountryDetails from './[countryName]';
+import CountryDetails from '../pages/CountryDetail/[countryName]';
 
 // Mock next/image to render a regular img
 jest.mock('next/image', () => {
@@ -10,11 +10,11 @@ jest.mock('next/image', () => {
 });
 
 // Mock child components
-jest.mock('../../components/Header', () => {
+jest.mock('../components/Header', () => {
   const React = require('react');
   return function Header() { return React.createElement('div', { 'data-testid': 'header' }); };
 });
-jest.mock('../../components/LeftArrow', () => {
+jest.mock('../components/LeftArrow', () => {
   const React = require('react');
   return function LeftArrow() { return React.createElement('span', { 'data-testid': 'left-arrow' }); };
 });
