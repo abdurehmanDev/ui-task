@@ -19,7 +19,7 @@ export default function CountryDetails() {
   };
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
+    fetch("https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,borders,timezones,currencies,subregion,languages")
       .then((res) => res.json())
       .then((data) => setIndividualData(data))
       .catch((err) => console.log(`An error occured ${err}`));
@@ -67,34 +67,40 @@ export default function CountryDetails() {
                       <ul className="detail-sub">
                         <li>
                           Native Name: <span className={darkMode? "detail-sub-value" : ""}>
-                            {data.name.official}
+                            {data?.name?.official ?? "N/A"}
                             </span>
                         </li>
                         <li>
                           Population: <span className={darkMode? "detail-sub-value" : ""}>
-                               {new Intl.NumberFormat().format(data.population)}
+                            {typeof data.population === 'number' ? new Intl.NumberFormat().format(data.population) : "N/A"}
                           </span>
                         </li>
                         <li>
-                          Region:  <span className={darkMode? "detail-sub-value" : ""}>{data.region}</span>
+                          Region:  <span className={darkMode? "detail-sub-value" : ""}>{data?.region ?? "N/A"}</span>
                         </li>
                         <li>
-                          Sub Region:  <span className={darkMode? "detail-sub-value" : ""}>{data.subregion}</span>
+                          Sub Region:  <span className={darkMode? "detail-sub-value" : ""}>{data?.subregion ?? "N/A"}</span>
                         </li>
                         <li>
-                          Capital:   <span className={darkMode? "detail-sub-value" : ""}>{data.capital[0]}</span>
+                          Capital:   <span className={darkMode ? "detail-sub-value" : ""}>
+                            {Array.isArray(data.capital) && data.capital.length > 0 ? data.capital[0] : "N/A"}
+                          </span>
                         </li>
                       </ul>
                       <ul className="detail-sub">
                         <li>
-                          Time Zone:   <span className={darkMode? "detail-sub-value" : ""}>{data.timezones[0]}</span>
+                          Time Zone:   <span className={darkMode? "detail-sub-value" : ""}>
+                            {Array.isArray(data.timezones) && data.timezones.length > 0 ? data.timezones[0] : "N/A"}
+                          </span>
                         </li>
                         <li>
-                          Currencies: <span className={darkMode? "detail-sub-value" : ""}>{Object.values(data.currencies as Record<string, { name: string }>)[0].name}</span>
+                          Currencies: <span className={darkMode? "detail-sub-value" : ""}>
+                            {data.currencies && Object.values(data.currencies).length > 0 && (Object.values(data.currencies)[0] as any)?.name ? (Object.values(data.currencies)[0] as any).name : "N/A"}
+                          </span>
                         </li>
                         <li>
                           Languages: <span className={darkMode? "detail-sub-value" : ""}>
-                            {Object.values(data.languages).join(", ")}
+                            {data.languages && Object.values(data.languages).length > 0 ? Object.values(data.languages).join(", ") : "N/A"}
                           </span>
                         </li>
                       </ul>

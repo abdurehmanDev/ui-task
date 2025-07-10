@@ -11,25 +11,25 @@ import { type } from "os";
  function Home() {
                    
 
-  const [tempCountryData, setTempCountryData] = useState<string[]>([]);
+  const [tempCountryData, setTempCountryData] = useState<any[]>([]);
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(8);
   const [darkMode , setDarkMode] = useState(false);
-  const [countryData, setCountryData] = useState<string[]>([]);
+  const [countryData, setCountryData] = useState<any[]>([]);
 
   useEffect(() => { 
-    fetch("https://restcountries.com/v3.1/all")
+    fetch("https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,borders,timezones,currencies,subregion,languages")
       .then((res) => res.json())
-      .then((data) => setCountryData(data))
-      .then((err) => console.log(`An error occured ${err}`));
+      .then((data) => setCountryData(Array.isArray(data) ? data : []))
+      .catch((err) => console.log(`An error occured ${err}`));
   }, []);
 
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
+    fetch("https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,borders,timezones,currencies,subregion,languages")
       .then((res) => res.json())
-      .then((data) => setTempCountryData(data))
-      .then((err) => console.log(`An error occured ${err}`));
+      .then((data) => setTempCountryData(Array.isArray(data) ? data : []))
+      .catch((err) => console.log(`An error occured ${err}`));
   }, []);
 
   console.log(countryData);
@@ -72,7 +72,7 @@ const darkModeTogg = () => {
       <div className={darkMode ? "main-page dark-mode-body" :  "main-page" }>
         <SearchBar filterByRegion={filterByRegion} darkMode={darkMode}/>
         <div className="grid-section">
-          {tempCountryData &&
+          {Array.isArray(tempCountryData) &&
             tempCountryData.slice(startIndex, endIndex).map((data: any) => (
               <div className={darkMode? "country-card dark-mode-container" : "country-card"} key={data.ccn3}>
                 <Link href={`CountryDetail/${encodeURIComponent(data.name.common)}`}>
